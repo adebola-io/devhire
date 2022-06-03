@@ -1,0 +1,8 @@
+.developer_container {
+  display: flex;
+  justify-content: center;
+  height: 224px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  outline: 2px solid red;
+}

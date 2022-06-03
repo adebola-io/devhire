@@ -1,0 +1,15 @@
+footer {
+  display: flex;
+  justify-content: space-between;
+}
+span.copyright {
+  color: #8692a6;
+  margin-left: 24.305%;
+}
+select#currency {
+  width: 167px;
+  height: 42px;
+  margin-right: 5.9027%;
+  border: 1px solid #8692a6;
+  border-radius: 6px;
+}
