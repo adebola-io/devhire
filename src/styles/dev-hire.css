@@ -20,7 +20,9 @@ body {
   background-color: var(--background);
   font-family: Poppins;
 }
-
+html::-webkit-scrollbar-track {
+  background-color: var(--complement);
+}
 .fill {
   display: flex;
   justify-content: center;

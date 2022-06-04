@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import heart_white from "../assets/heart_white.png";
+import heart_red from "../assets/heart_red.png";
 import "./Developer.css";
 
 export default function Developer(props) {
@@ -20,10 +22,7 @@ export default function Developer(props) {
       ],
       { duration: 500, fill: "both" }
     );
-    heart.current.setAttribute(
-      "style",
-      `--heart_color: ${isFavorited ? "red" : "#ffffff"}`
-    );
+    heart.current.src = isFavorited ? heart_red : heart_white;
   }
   return (
     <div
@@ -35,7 +34,7 @@ export default function Developer(props) {
         onClick={favoriteDeveloper}
         className="developer_favorites_prompt"
       >
-        <div ref={heart} className="heart"></div>
+        <img src={heart_white} alt="heart" ref={heart} />
       </button>
       <div
         style={{ backgroundImage: `url(${props.banner})` }}

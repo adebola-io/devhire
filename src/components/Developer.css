@@ -36,34 +36,7 @@
   border-radius: 10px;
   cursor: pointer;
 }
-.developer_favorites_prompt .heart {
-  --heart_color: #ffffff;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 68%;
-  height: 62%;
-}
-.heart::before,
-.heart::after {
-  display: block;
-  content: "";
-  width: 50%;
-  height: 62%;
-  background-color: var(--heart_color);
-  border-radius: 57% 50% 0% 0%;
-  transform: translateX(25%) rotate(300deg);
-}
-.heart::after {
-  transform: translateX(-25%) rotate(60deg);
-}
-/* .heart::before {
-  left: -50%;
-}
-.heart::after {
-  top: -50%;
-} */
+
 .developer_banner {
   height: 62.05%;
   width: 95.8%;

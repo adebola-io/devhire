@@ -2,6 +2,7 @@
 
 const initstate = {
   heading: "Hire Top Developers",
+  page: window.location.pathname,
 };
 
 /**
@@ -14,6 +15,9 @@ export const reducer = (state = initstate, action) => {
   switch (action.type) {
     case "CHANGE_HEADING":
       return { ...state, heading: action.payload };
+    case "CHANGE_PAGE":
+      console.log(state.page);
+      return { ...state, page: action.payload };
     default:
       return state;
   }
