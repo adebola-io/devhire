@@ -1,6 +1,8 @@
 footer {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  margin-bottom: 25px;
 }
 span.copyright {
   color: #8692a6;
@@ -10,6 +12,12 @@ select#currency {
   width: 167px;
   height: 42px;
   margin-right: 5.9027%;
+  border: 1px solid #8692a6;
+  border-radius: 6px;
+}
+select#currency option {
+  width: 167px;
+  height: 42px;
   border: 1px solid #8692a6;
   border-radius: 6px;
 }

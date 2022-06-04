@@ -10,10 +10,13 @@ const DevHire = () => {
   return (
     <Router>
       <Sidebar />
-      <Routes>
+      <main className="home_view">
+        <h1 className="heading">Hire Top Developers</h1>
+          <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/favorites" element={<Favorites />} />
       </Routes>
+      </main>
       <Footer />
     </Router>
   );

@@ -6,23 +6,72 @@
   height: 224px;
   border-radius: 10px;
   background-color: #ffffff;
-  box-shadow: 0 0 10px 0 rgb(175, 175, 175);
+  box-shadow: 0 0 10px 0 rgb(207, 207, 207);
   transition-duration: 300ms;
+  animation-name: subtle_drop;
   /* outline: 2px solid red; */
+}
+@keyframes subtle_drop {
+  0% {
+    transform: translateY(-10%) scale(1.035);
+    opacity: 0;
+  }
 }
 .developer_container:hover {
   transform: scale(1.025);
   box-shadow: 0 0 9px 0 rgb(90, 89, 89);
 }
+.developer_favorites_prompt {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  width: 35px;
+  border: none;
+  background-color: #bbbbbb;
+  margin-right: 4.36%;
+  right: 0;
+  margin-top: 6.25%;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.developer_favorites_prompt .heart {
+  --heart_color: #ffffff;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 68%;
+  height: 62%;
+}
+.heart::before,
+.heart::after {
+  display: block;
+  content: "";
+  width: 50%;
+  height: 62%;
+  background-color: var(--heart_color);
+  border-radius: 57% 50% 0% 0%;
+  transform: translateX(25%) rotate(300deg);
+}
+.heart::after {
+  transform: translateX(-25%) rotate(60deg);
+}
+/* .heart::before {
+  left: -50%;
+}
+.heart::after {
+  top: -50%;
+} */
 .developer_banner {
   height: 62.05%;
   width: 95.8%;
   margin-top: 2.1%;
   border-radius: 10px;
-  background-image: none;
   background-position: center;
   background-size: cover;
-  background-color: #1d9bf0;
+  background-color: var(--complement);
 }
 .developer_info {
   width: 100%;
@@ -34,7 +83,9 @@
   border-radius: 50%;
   height: 23.2463%;
   aspect-ratio: 1;
-  background-color: #004b2e;
+  background-position: center;
+  background-size: cover;
+  background-color: var(--complement);
   border: 2px solid #ffffff;
   transform: translateY(-50%);
 }
@@ -63,7 +114,7 @@
 .developer_hire_button {
   margin-left: auto;
   margin-right: 5.426%;
-  color: #1d9bf0;
+  color: var(--complement);
   cursor: pointer;
   font-family: "Public Sans";
   font-style: normal;

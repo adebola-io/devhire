@@ -1,0 +1,29 @@
+.site_loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  aspect-ratio: 1;
+}
+.loader_circle {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70%;
+  width: 70%;
+  border: 5px solid var(--complement);
+  border-radius: 50%;
+  animation: loader_spin 750ms infinite linear;
+}
+@keyframes loader_spin {
+  0% {
+    transform: rotate(-360deg);
+  }
+}
+.loader_divider {
+  position: absolute;
+  height: 120%;
+  width: 25%;
+  background-color: var(--background);
+}
