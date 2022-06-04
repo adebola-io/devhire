@@ -3,26 +3,34 @@ import { Link } from "react-router-dom";
 import heart_white from "../assets/heart_white.png";
 import heart_red from "../assets/heart_red.png";
 import "./Developer.css";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Developer(props) {
-  const heart = React.useRef(null),
-    favoriteRef = React.useRef(null);
-  let isFavorited = false;
-  function favoriteDeveloper(e) {
-    isFavorited = !isFavorited;
-    favoriteRef.current.style.backgroundColor = isFavorited
-      ? "white"
-      : "#bbbbbb";
-    heart.current.animate(
-      [
-        { transform: "scale(1)" },
-        { transform: "scale(1.25)" },
-        { transform: "scale(0.85)" },
-        { transform: "none" },
-      ],
-      { duration: 500, fill: "both" }
-    );
-    heart.current.src = isFavorited ? heart_red : heart_white;
+  const dispatch = useDispatch();
+  const selector = useSelector((s) => s);
+  const heart = React.useRef(null);
+  const [isFavorited, setIsFavorited] = React.useState(
+    selector.favs.filter((f) => f.name === props.name).length > 0
+  );
+
+  function favoriteDeveloper() {
+    setIsFavorited(() => {
+      heart.current.animate(
+        [
+          { transform: "scale(1)" },
+          { transform: "scale(1.25)" },
+          { transform: "scale(0.85)" },
+          { transform: "none" },
+        ],
+        { duration: 500, fill: "both" }
+      );
+      if (!isFavorited) {
+        dispatch({ type: "FAVORITE", payload: { ...props } });
+      } else {
+        dispatch({ type: "REMOVE_FAVORITE", payload: props.name });
+      }
+      return !isFavorited;
+    });
   }
   return (
     <div
@@ -30,11 +38,15 @@ export default function Developer(props) {
       style={{ animationDuration: props.delay }}
     >
       <button
-        ref={favoriteRef}
+        style={{ backgroundColor: isFavorited ? "white" : "#bbbbbb" }}
         onClick={favoriteDeveloper}
         className="developer_favorites_prompt"
       >
-        <img src={heart_white} alt="heart" ref={heart} />
+        <img
+          src={isFavorited ? heart_red : heart_white}
+          alt="heart"
+          ref={heart}
+        />
       </button>
       <div
         style={{ backgroundImage: `url(${props.banner})` }}

@@ -3,6 +3,7 @@
 const initstate = {
   heading: "Hire Top Developers",
   page: window.location.pathname,
+  favs: [],
 };
 
 /**
@@ -16,8 +17,14 @@ export const reducer = (state = initstate, action) => {
     case "CHANGE_HEADING":
       return { ...state, heading: action.payload };
     case "CHANGE_PAGE":
-      console.log(state.page);
       return { ...state, page: action.payload };
+    case "FAVORITE":
+      return { ...state, favs: state.favs.concat([action.payload]) };
+    case "REMOVE_FAVORITE":
+      return {
+        ...state,
+        favs: state.favs.filter((f) => f.name !== action.payload),
+      };
     default:
       return state;
   }
