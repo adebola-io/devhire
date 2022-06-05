@@ -10,13 +10,17 @@ aside.sidebar {
 @media (max-width: 768px) {
   aside.sidebar {
     width: 38.56%;
-    /* transform: translate(-100%); */
     transition-duration: 300ms;
   }
 }
 @media (max-width: 425px) {
   aside.sidebar {
     width: 50%;
+  }
+}
+@media (max-width: 280px) {
+  aside.sidebar {
+    width: 80%;
   }
 }
 h1.logo {

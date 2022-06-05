@@ -40,8 +40,10 @@ h1.heading {
   h1.heading {
     text-align: center;
     margin-inline: 23.958%;
+    margin-top: 2.976vh;
   }
 }
+
 @keyframes slide_in {
   0% {
     transform: translateX(-10%);
@@ -74,6 +76,7 @@ h1.heading {
   .developers_grid {
     grid: auto / auto auto;
     margin-left: 5.9027%;
+    min-height: 65vh;
   }
 }
 @media (max-width: 425px) {
