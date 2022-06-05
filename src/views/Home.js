@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import Developer from "../components/Developer";
 import Loader from "../components/Loader";
-import {MOCK_DEVELOPERS} from "../data"
 import { getDevelopers } from "../services";
 
 export default function Home() {
@@ -47,7 +46,7 @@ export default function Home() {
                   photo={d._source.avatar}
                   price={d._source.starting_from}
                   delay={(parseInt(index / 4) + 1) * 300}
-                  // banner={d._source.service_photo}
+                  banner={d._source.service_photo}
                 />
               );
             });

@@ -14,7 +14,6 @@ import { Link } from "react-router-dom";
 import heart_white from "../assets/heart_white.png";
 import heart_red from "../assets/heart_red.png";
 import "./Developer.css";
-import { getRates } from "../services";
 import { useDispatch, useSelector } from "react-redux";
 
 /**
