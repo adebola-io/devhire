@@ -89,3 +89,15 @@ h1.heading {
   justify-content: center;
   align-items: center;
 }
+
+/*  */
+.no_favorite_text {
+  color: grey;
+  animation: pull_down 340ms;
+}
+@keyframes pull_down {
+  0% {
+    transform: translateY(-120%) scale(0.65);
+    opacity: 0;
+  }
+}

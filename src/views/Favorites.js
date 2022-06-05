@@ -19,9 +19,10 @@ export default function Favorites() {
         switch (true) {
           case selector.favs.length === 0:
             return (
-              <div style={{ color: "grey" }}>No favorite developer yet.</div>
+              <div className='no_favorite_text'>No favorite developer yet.</div>
             );
           default:
+            // Return favorite developers.
             return selector.favs.map((f, index) => {
               return (
                 <Developer
