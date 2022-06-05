@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getFlags } from "../services";
+import { getFlags, getRates } from "../services";
 import "./Footer.css";
 
 export default function Footer() {
@@ -12,11 +12,14 @@ export default function Footer() {
    * @param {Event} e
    */
   function changeCurrencyType(e) {
-    dispatch({
-      type: "CHANGE_CURRENCY",
-      payload: state.currencies.find(
-        (currency) => currency.name === e.target.value
-      ),
+    const newCurrency = state.currencies.find(
+      (currency) => currency.name === e.target.value
+    );
+    getRates(newCurrency.short).then((result) => {
+      dispatch({
+        type: "CHANGE_CURRENCY",
+        payload: { ...newCurrency, rate: result.data },
+      });
     });
   }
   React.useEffect(() => {

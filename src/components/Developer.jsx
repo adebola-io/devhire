@@ -3,6 +3,7 @@
  *  isFavorite?: boolean,
  *  name: string,
  *  delay: number,
+ *  price: number,
  *  photo: string,
  *  banner: string
  * }} DeveloperProps
@@ -13,6 +14,7 @@ import { Link } from "react-router-dom";
 import heart_white from "../assets/heart_white.png";
 import heart_red from "../assets/heart_red.png";
 import "./Developer.css";
+import { getRates } from "../services";
 import { useDispatch, useSelector } from "react-redux";
 
 /**
@@ -22,7 +24,7 @@ import { useDispatch, useSelector } from "react-redux";
  */
 export default function Developer(props) {
   const dispatch = useDispatch();
-  /** @type {Sta} */
+  /** @type {import("../redux/reducers").State} */
   const selector = useSelector((s) => s);
   const heart = React.useRef(null);
   const isFavorited =
@@ -76,7 +78,10 @@ export default function Developer(props) {
         <div className="developer_details">
           <div className="developer_id">
             <h4 className="developer_name">{props.name}</h4>
-            <div className="developer_price">{props.price}</div>
+            <div className="developer_price">
+              {selector.currency.symbol +
+                (selector.currency.rate * props.price).toPrecision(7)}
+            </div>
           </div>
           <Link to="#" className="developer_hire_button">
             Hire

@@ -45,7 +45,7 @@ export default function Home() {
                   key={index}
                   name={d._source.display_name}
                   photo={d._source.avatar}
-                  price={"₦" + d._source.starting_from}
+                  price={d._source.starting_from}
                   delay={(parseInt(index / 4) + 1) * 300}
                   // banner={d._source.service_photo}
                 />

@@ -39,3 +39,6 @@ select#currency:focus,
 select#currency:active {
   border: none;
 }
+select#currency > option {
+  background-color: var(--background);
+}

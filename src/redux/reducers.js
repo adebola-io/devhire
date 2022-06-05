@@ -3,7 +3,12 @@
  * @typedef {{
  *  heading: string,
  *  page: string,
- *  currency: "Naira"| "Dollar"| "Pound" | "Euro" | "Dinar",
+ *  currency: {
+ *    rate: number,
+ *    short: string,
+ *    symbol: string,
+ *    flag_url: string
+ *  },
  *  favs: Array<import("../components/Developer").DeveloperProps>,
  *  sidebarIsToggled: boolean
  *  }} State
@@ -14,9 +19,12 @@ const initstate = {
   heading: "Hire Top Developers",
   page: window.location.pathname,
   currency: {
+    rate: 1,
+    symbol: "₦",
     short: "NGN",
     flag_url: "https://tera-media.s3-eu-west-1.amazonaws.com/currency-flag/webp/nigeria.webp"
   },
+  rate: 1,
   favs: [],
   sidebarIsToggled: window.innerWidth > 768,
 };
