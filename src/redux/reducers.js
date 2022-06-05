@@ -13,9 +13,12 @@
 const initstate = {
   heading: "Hire Top Developers",
   page: window.location.pathname,
-  currency: "Naira",
+  currency: {
+    short: "NGN",
+    flag_url: "https://tera-media.s3-eu-west-1.amazonaws.com/currency-flag/webp/nigeria.webp"
+  },
   favs: [],
-  sidebarIsToggled: false,
+  sidebarIsToggled: window.innerWidth > 768,
 };
 
 /**

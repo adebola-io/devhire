@@ -107,6 +107,11 @@ button.sidebar_toggle {
   cursor: pointer;
   transition-duration: 300ms;
 }
+@media (min-width: 768px) {
+  button.sidebar_toggle {
+    display: none;
+  }
+}
 button.sidebar_toggle hr {
   margin-block: 7.25%;
   width: 60%;

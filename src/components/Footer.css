@@ -13,16 +13,29 @@ span.copyright {
     margin-left: 5.9027%;
   }
 }
-select#currency {
+.currency_toggle {
+  display: grid;
+  grid: auto/ 30% 70%;
+  place-items: center;
   width: 167px;
   height: 42px;
   margin-right: 5.9027%;
   border: 1px solid #8692a6;
   border-radius: 6px;
 }
-select#currency option {
-  width: 167px;
-  height: 42px;
-  border: 1px solid #8692a6;
-  border-radius: 6px;
+.currency_toggle:active {
+  border: 2px solid black;
+}
+.currency_toggle img {
+  height: 55%;
+}
+select#currency {
+  background-color: inherit;
+  border: none;
+  width: 94.9%;
+  height: 100%;
+}
+select#currency:focus,
+select#currency:active {
+  border: none;
 }

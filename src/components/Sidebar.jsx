@@ -74,10 +74,12 @@ function NavLink(props) {
   };
   function changePage() {
     dispatch({ type: "CHANGE_PAGE", payload: props.to });
-    dispatch({
-      type: "TOGGLE_SIDEBAR",
-      payload: !selector.sidebarIsToggled,
-    });
+    // Only close the sidebar in smaller screens.
+    if (window.innerWidth < 768)
+      dispatch({
+        type: "TOGGLE_SIDEBAR",
+        payload: !selector.sidebarIsToggled,
+      });
   }
   return (
     <li className="navlink">
