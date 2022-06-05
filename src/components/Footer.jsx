@@ -3,9 +3,7 @@ import "./Footer.css";
 
 export default function Footer() {
   const selector = useSelector((s) => s);
-  function changeCurrencyType(e) {
-    console.log(e);
-  }
+  function changeCurrencyType(e) {}
   return (
     <footer>
       <span className="copyright">
