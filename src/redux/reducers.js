@@ -16,7 +16,7 @@
 
 /** @type {State} */
 const initstate = {
-  heading: "Hire Top Developers",
+  heading: window.location.pathname === '/' ? "Hire Top Developers" : 'Favorites',
   page: window.location.pathname,
   currency: {
     rate: 1,
