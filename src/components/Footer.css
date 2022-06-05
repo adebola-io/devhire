@@ -8,6 +8,11 @@ span.copyright {
   color: #8692a6;
   margin-left: 24.305%;
 }
+@media (max-width: 768px) {
+  span.copyright {
+    margin-left: 5.9027%;
+  }
+}
 select#currency {
   width: 167px;
   height: 42px;

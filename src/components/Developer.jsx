@@ -1,3 +1,13 @@
+/**
+ * @typedef {{
+ *  isFavorite?: boolean,
+ *  name: string,
+ *  delay: number,
+ *  photo: string,
+ *  banner: string
+ * }} DeveloperProps
+ */
+
 import React from "react";
 import { Link } from "react-router-dom";
 import heart_white from "../assets/heart_white.png";
@@ -5,41 +15,47 @@ import heart_red from "../assets/heart_red.png";
 import "./Developer.css";
 import { useDispatch, useSelector } from "react-redux";
 
+/**
+ * Template component for a developer.
+ * @param {DeveloperProps} props
+ * @returns {JSX.Element}
+ */
 export default function Developer(props) {
   const dispatch = useDispatch();
+  /** @type {Sta} */
   const selector = useSelector((s) => s);
   const heart = React.useRef(null);
-  const [isFavorited, setIsFavorited] = React.useState(
-    selector.favs.filter((f) => f.name === props.name).length > 0
-  );
-
-  function favoriteDeveloper() {
-    setIsFavorited(() => {
-      heart.current.animate(
-        [
-          { transform: "scale(1)" },
-          { transform: "scale(1.25)" },
-          { transform: "scale(0.85)" },
-          { transform: "none" },
-        ],
-        { duration: 500, fill: "both" }
-      );
-      if (!isFavorited) {
-        dispatch({ type: "FAVORITE", payload: { ...props } });
-      } else {
-        dispatch({ type: "REMOVE_FAVORITE", payload: props.name });
-      }
-      return !isFavorited;
+  const isFavorited =
+    props.isFavorite ||
+    selector.favs.filter((f) => f.name === props.name).length > 0;
+  /**
+   * Mark a developer as a favorite.
+   * @param {Event} e
+   */
+  function markDeveloperAsFavorite(e) {
+    dispatch({
+      type: "TOGGLE_FAVORITE",
+      payload: { ...props },
+      init: !isFavorited,
     });
+    heart.current.animate(
+      [
+        { transform: "scale(1)" },
+        { transform: "scale(1.25)" },
+        { transform: "scale(0.85)" },
+        { transform: "none" },
+      ],
+      { duration: 500, fill: "both" }
+    );
   }
   return (
     <div
       className="developer_container"
-      style={{ animationDuration: props.delay }}
+      style={{ animationDuration: `${props.delay}ms` }}
     >
       <button
         style={{ backgroundColor: isFavorited ? "white" : "#bbbbbb" }}
-        onClick={favoriteDeveloper}
+        onClick={markDeveloperAsFavorite}
         className="developer_favorites_prompt"
       >
         <img

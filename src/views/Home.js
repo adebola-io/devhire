@@ -2,8 +2,8 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import Developer from "../components/Developer";
 import Loader from "../components/Loader";
+import {MOCK_DEVELOPERS} from "../data"
 import { getDevelopers } from "../services";
-import "./Home.css";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -15,24 +15,16 @@ export default function Home() {
   React.useEffect(() => {
     setState((s) => ({ ...s, loading: true }));
     dispatch({ type: "CHANGE_HEADING", payload: "Hire Top Developers" });
+    // Fetch developers from API.
     getDevelopers().then((result) => {
-      setState((s) => ({ ...s, loading: false }));
-      if (result.error) setState((s) => ({ ...s, error: true }));
-      else {
-        setState((s) => ({
-          ...s,
-          developers: result.data.service_search_results.hits,
-        }));
-      }
+      if (result.error) setState((s) => ({ ...s, loading: false, error: true }));
+      else setState((s) => ({...s, loading: false, developers: result.data}));
     });
-  }, []);
-
+  }, [dispatch]);
+  const className = `developers_grid ${state.developers.length ? "" : "developers_grid_wait"}`
+  
   return (
-    <div
-      className={`developers_grid ${
-        state.developers.length ? "" : "developers_grid_wait"
-      }`}
-    >
+    <div className={className}>
       {(function () {
         switch (true) {
           //   Load while waiting for API response.
@@ -46,15 +38,15 @@ export default function Home() {
           case state.error:
             return "Something went wrong. Please try again later.";
           default:
-            // Show developers.
+          // Show developers.
             return state.developers.map((d, index) => {
               return (
                 <Developer
-                  key={d.id}
+                  key={index}
                   name={d._source.display_name}
                   photo={d._source.avatar}
                   price={"₦" + d._source.starting_from}
-                  delay={`${(parseInt(index / 4) + 1) * 300}ms`}
+                  delay={(parseInt(index / 4) + 1) * 300}
                   // banner={d._source.service_photo}
                 />
               );

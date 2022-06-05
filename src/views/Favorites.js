@@ -4,6 +4,7 @@ import Developer from "../components/Developer";
 
 export default function Favorites() {
   const dispatch = useDispatch();
+  /** @type {import("../redux/reducers").State} */
   const selector = useSelector((s) => s);
   React.useEffect(() => {
     dispatch({ type: "CHANGE_HEADING", payload: "Favorites" });
@@ -26,7 +27,8 @@ export default function Favorites() {
                 <Developer
                   key={index}
                   name={f.name}
-                  delay="300ms"
+                  delay={300}
+                  isFavorite={true}
                   photo={f.photo}
                   price={f.price}
                   banner={f.banner}

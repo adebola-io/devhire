@@ -1,9 +1,23 @@
 aside.sidebar {
   position: fixed;
+  z-index: 99;
+  background-color: var(--background);
   top: 0;
   height: 100%;
   width: 20.83%;
   border: 1px solid #dbdbe9;
+}
+@media (max-width: 768px) {
+  aside.sidebar {
+    width: 38.56%;
+    /* transform: translate(-100%); */
+    transition-duration: 300ms;
+  }
+}
+@media (max-width: 425px) {
+  aside.sidebar {
+    width: 50%;
+  }
 }
 h1.logo {
   position: absolute;
@@ -14,6 +28,11 @@ h1.logo {
   font-size: 32px;
   line-height: 34px;
   letter-spacing: 1px;
+}
+@media (max-width: 768px) {
+  h1.logo {
+    font-size: 23px;
+  }
 }
 h1.logo span {
   color: var(--complement);
@@ -61,4 +80,38 @@ li.navlink a {
 }
 li.navlink a:hover {
   color: var(--complement);
+}
+@media (max-width: 768px) {
+  li.navlink a {
+    font-size: 14px;
+  }
+}
+
+/* SIDEBAR TOGGLER */
+button.sidebar_toggle {
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 45px;
+  aspect-ratio: 1;
+  margin-top: 2.676vh;
+  margin-right: 5.9027%;
+  z-index: 99;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--background);
+  cursor: pointer;
+  transition-duration: 300ms;
+}
+button.sidebar_toggle hr {
+  margin-block: 7.25%;
+  width: 60%;
+  height: 7%;
+  background-color: var(--complement);
+  border: none;
+  border-radius: 3px;
 }
